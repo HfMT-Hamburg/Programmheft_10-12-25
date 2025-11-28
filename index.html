@@ -1,0 +1,1121 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Dissonanz der Macht – Digitales Programmheft</title>
+
+  <style>
+    :root {
+      --accent: #C69B44;
+      --bg: #ffffff;
+      --text: #222222;
+      --muted: #555555;
+      --max-width: 960px;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+        "Helvetica Neue", Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    /* TITELBEREICH */
+    header.hero {
+      background: var(--accent);
+      color: #111;
+      padding: 2.2rem 0;
+    }
+
+    .hero-inner {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+
+    .hero-title {
+      font-size: clamp(2.1rem, 5vw, 2.8rem);
+      font-weight: 800;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      margin: 0 0 0.3rem 0;
+      text-align: left;
+    }
+
+    .hero-subtitle {
+      font-size: clamp(1.05rem, 3.5vw, 1.25rem);
+      font-weight: 500;
+      margin: 0;
+      text-align: left;
+    }
+
+    main {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 1.5rem 1.5rem 3rem;
+    }
+
+    section { margin-bottom: 2.5rem; }
+
+    /* INTRO-BEREICH (nur Text) */
+
+    .intro-section {
+      display: flex;
+      flex-direction: column;
+      gap: 1.75rem;
+    }
+
+    .intro-blocks {
+      display: grid;
+      gap: 1.75rem;
+    }
+
+    .intro-block h2 {
+      font-size: 1.05rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--accent);
+      margin-bottom: 0.6rem;
+    }
+
+    .intro-block p {
+      margin: 0 0 0.75rem 0;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    /* TIMELINE – Layout im ursprünglichen Stil, rechts alles in einer Zeile */
+
+    .timeline-section h2 {
+      font-size: 1.2rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      margin-bottom: 1.5rem;
+    }
+
+    .timeline {
+      display: flex;
+      flex-direction: column;
+      gap: 1.8rem;
+    }
+
+    .timeline-item {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 0.9rem;
+      align-items: center;
+    }
+
+    .timeline-time-block {
+      min-width: 90px;
+      background: var(--accent);
+      border-radius: 999px;
+      padding: 0.6rem 0.9rem;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+    }
+
+    .timeline-time {
+      font-size: 0.95rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+    }
+
+    .timeline-right {
+      display: flex;
+      align-items: center;
+      gap: 0.9rem;
+      justify-content: flex-end;
+    }
+
+    .timeline-line {
+      flex: 1;
+      height: 1px;
+      background: rgba(0, 0, 0, 0.2);
+      position: relative;
+      transform-origin: left center;
+    }
+
+    .timeline-line::after {
+      content: "";
+      position: absolute;
+      right: -3px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--accent);
+    }
+
+    .timeline-label {
+      font-size: 0.8rem;
+      letter-spacing: 0.13em;
+      text-transform: uppercase;
+      color: var(--muted);
+      white-space: nowrap;
+    }
+
+    .timeline-label span.title {
+      text-transform: none;
+      font-style: italic;
+      letter-spacing: 0;
+      margin-left: 0.35rem;
+      font-size: 0.95rem;
+      color: var(--text);
+    }
+
+    .timeline-button {
+      display: inline-block;
+      padding: 0.5rem 1.1rem;
+      border-radius: 999px;
+      border: 1px solid var(--accent);
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      background: transparent;
+      transition: background 0.2s ease, color 0.2s ease, transform 0.1s ease;
+      white-space: nowrap;
+    }
+
+    .timeline-button:hover {
+      background: var(--accent);
+      color: #111;
+      transform: translateY(-1px);
+    }
+
+    /* PROGRAMM ABSCHNITTE */
+
+    .program-section {
+      padding-top: 2.5rem;
+      border-top: 1px solid rgba(0, 0, 0, 0.08);
+    }
+
+    .back-to-timeline {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      border-radius: 999px;
+      padding: 0.35rem 0.9rem;
+      border: 1px solid rgba(0, 0, 0, 0.25);
+      margin-bottom: 1.2rem;
+    }
+
+    .back-to-timeline .icon { font-size: 1.1rem; }
+
+    .program-time {
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--muted);
+      margin: 0 0 0.4rem 0;
+    }
+
+    .hall-banner {
+      width: 100%;
+      background: var(--accent);
+      padding: 0.9rem 1.2rem;
+      margin: 0 0 1.2rem 0;
+      border-radius: 6px;
+    }
+
+    .hall-name {
+      margin: 0;
+      padding: 0;
+      color: #111;
+      font-size: 1.15rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      text-align: left;
+    }
+
+    .program-intro {
+      color: var(--muted);
+      font-size: 0.9rem;
+      margin-bottom: 1.2rem;
+    }
+
+    .program-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      border-top: 1px solid rgba(0, 0, 0, 0.08);
+    }
+
+    .work {
+      padding: 1rem 0;
+      border-bottom: 1px solid rgba(0,0,0,0.12);
+    }
+
+    .composer {
+      font-size: 0.95rem;
+      font-weight: 600;
+      margin-bottom: 0.2rem;
+    }
+
+    .work-title {
+      font-size: 1.1rem;
+      font-style: italic;
+      font-weight: 500;
+      margin-bottom: 0.4rem;
+    }
+
+    .movements {
+      font-size: 0.9rem;
+      color: #666;
+      margin-bottom: 0.35rem;
+    }
+
+    .performers {
+      font-size: 0.8rem;
+      color: #333;
+      line-height: 1.5;
+    }
+
+    footer {
+      text-align: center;
+      font-size: 0.75rem;
+      color: var(--muted);
+      padding-top: 1.5rem;
+      border-top: 1px solid rgba(0, 0, 0, 0.06);
+      opacity: 0.8;
+    }
+
+    @media (min-width: 768px) {
+      main { padding-inline: 2rem; }
+    }
+
+    @keyframes timelineIn {
+      from { opacity: 0; transform: translateX(-16px); }
+      to   { opacity: 1; transform: translateX(0); }
+    }
+
+    @keyframes lineGrow {
+      from { transform: scaleX(0); }
+      to   { transform: scaleX(1); }
+    }
+
+    body.loaded .timeline-item {
+      animation: timelineIn 0.5s ease-out both;
+    }
+
+    body.loaded .timeline-item:nth-child(1)  { animation-delay: 0.05s; }
+    body.loaded .timeline-item:nth-child(2)  { animation-delay: 0.10s; }
+    body.loaded .timeline-item:nth-child(3)  { animation-delay: 0.15s; }
+    body.loaded .timeline-item:nth-child(4)  { animation-delay: 0.20s; }
+    body.loaded .timeline-item:nth-child(5)  { animation-delay: 0.25s; }
+    body.loaded .timeline-item:nth-child(6)  { animation-delay: 0.30s; }
+    body.loaded .timeline-item:nth-child(7)  { animation-delay: 0.35s; }
+    body.loaded .timeline-item:nth-child(8)  { animation-delay: 0.40s; }
+    body.loaded .timeline-item:nth-child(9)  { animation-delay: 0.45s; }
+    body.loaded .timeline-item:nth-child(10) { animation-delay: 0.50s; }
+    body.loaded .timeline-item:nth-child(11) { animation-delay: 0.55s; }
+    body.loaded .timeline-item:nth-child(12) { animation-delay: 0.60s; }
+    body.loaded .timeline-item:nth-child(13) { animation-delay: 0.65s; }
+    body.loaded .timeline-item:nth-child(14) { animation-delay: 0.70s; }
+
+    body.loaded .timeline-line {
+      animation: lineGrow 0.5s ease-out forwards;
+    }
+
+    @media (max-width: 700px) {
+      .timeline-item {
+        grid-template-columns: 1fr;
+        align-items: flex-start;
+      }
+
+      .timeline-right {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .timeline-line {
+        width: 100%;
+      }
+
+      .timeline-label {
+        white-space: normal;
+      }
+
+      .timeline-button {
+        align-self: flex-start;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<header class="hero" id="top">
+  <div class="hero-inner">
+    <h1 class="hero-title">Dissonanz der Macht</h1>
+    <p class="hero-subtitle">Der Schostakowitsch-Abend an der HfMT</p>
+  </div>
+</header>
+
+<main>
+
+  <!-- INTRO NUR TEXT -->
+  <section class="intro-section">
+    <div class="intro-blocks">
+      <article class="intro-block">
+        <h2>Grußwort</h2>
+        <p>Liebes Publikum,</p>
+        <p>
+          Die Hochschule für Musik und Theater freut sich, mit diesem Schostakowitsch-Festival einen Raum zu eröffnen, in dem künstlerische Neugier, historische Reflexion und gemeinsames Lernen auf besondere Weise zusammentreffen. Der Abend ist Ergebnis einer intensiven Zusammenarbeit von Lehrenden und Studierenden, die sich mit großem Engagement der musikalischen Welt Dmitri Schostakowitschs gewidmet haben. Heute erhalten Sie die Möglichkeit, einen umfassenden Einblick in das Werk eines der wichtigsten Komponisten des 20. Jahrhunderts zu gewinnen. Schostakowitschs Werk steht wie kaum ein anderes für die Spannungsfelder des 20. Jahrhunderts: zwischen Anpassung und Aufbegehren, zwischen persönlichem Ausdruck und politischem Druck, zwischen Hoffnung, Angst und tiefem Humanismus. Diese Ambivalenzen verleihen seiner Musik eine Aktualität, die uns gerade heute eindringlich berührt.
+        </p>
+        <p>
+          In einer Zeit, in der der russische Angriffskrieg gegen die Ukraine großes Leid verursacht und die kulturellen Beziehungen zwischen Ländern und Menschen auf eine harte Probe stellt, ist es uns ein besonderes Anliegen, Schostakowitschs Musik nicht losgelöst von der Gegenwart zu betrachten. Wir glauben jedoch fest daran, dass Kunst Räume schaffen kann, in denen Dialog, Empathie und kritisches Nachdenken möglich bleiben.
+        </p>
+        <p>
+          Mein Dank gilt allen Mitwirkenden, insbesondere dem Initiator und Organisator Prof. Stepan Simonian, den musizierenden Lehrenden und Studierenden, und allen weiteren Menschen, die zum Gelingen dieses besonderen Abends beitragen.
+        </p>
+        <p>
+          Ihr<br>
+          Prof. Dr. Jan Philipp Sprick
+        </p>
+      </article>
+
+      <article class="intro-block">
+        <h2>Konzept</h2>
+        <p>
+          Dieser Abend richtet den Blick auf einen Komponisten, der im Spannungsfeld zwischen staatlicher Kontrolle und künstlerischer Integrität arbeitete. Schostakowitsch musste sich den Vorgaben des stalinistischen Regimes beugen und wurde zugleich wiederholt als „Formalist“ verurteilt. Dennoch entwickelte er Strategien, um seine ästhetische Haltung zu bewahren und musikalische Aussagen zu formulieren, die das Offizielle unterlaufen.
+        </p>
+        <p>
+          Die Dramaturgie des Abends folgt dieser Doppelbewegung: Anpassung in der Oberfläche, Widerstand im Kern. In den ausgewählten Werken wird hörbar, wie Schostakowitsch emotionale Wahrheiten verschlüsselte und Räume eröffnete, in denen individuelle Erfahrung trotz politischer Überwachung Bestand haben konnte. Angesichts der aktuellen Lage in Russland und eines Regimes, das erneut Opposition unterdrückt und Kritik zum Verstummen bringen will, erhält diese Musik bedrückende Aktualität. Sie erinnert daran, dass Macht sich stets an der Kunst reibt – und dass Kunst eine ihrer wirksamsten Gegenkräfte bleibt.
+        </p>
+        <p>
+          Mein Dank gilt den Studierenden und Kolleg*innen, deren Engagement, Disziplin und Offenheit diesen Abend erst ermöglicht haben.<br>
+          Stepan Simonian
+        </p>
+      </article>
+    </div>
+  </section>
+
+  <!-- TIMELINE -->
+  <section class="timeline-section" id="timeline">
+    <h2>Programmübersicht</h2>
+
+    <div class="timeline">
+
+      <!-- 17:00 -->
+      <article class="timeline-item">
+        <div class="timeline-time-block">
+          <div class="timeline-time">17:00</div>
+        </div>
+        <div class="timeline-right">
+          <div class="timeline-line"></div>
+          <div class="timeline-label">
+            MENDELSSOHN-SAAL:<span class="title">Auftakt</span>
+          </div>
+          <a class="timeline-button" href="#programm-1700-mendelssohn">Zum Programm</a>
+        </div>
+      </article>
+
+      <!-- 17:15 -->
+      <article class="timeline-item">
+        <div class="timeline-time-block">
+          <div class="timeline-time">17:15</div>
+        </div>
+        <div class="timeline-right">
+          <div class="timeline-line"></div>
+          <div class="timeline-label">
+            ORCHESTERSTUDIO:<span class="title">Horizonte</span>
+          </div>
+          <a class="timeline-button" href="#programm-1715-orchesterstudio">Zum Programm</a>
+        </div>
+      </article>
+
+      <!-- 18:00 -->
+      <article class="timeline-item">
+        <div class="timeline-time-block">
+          <div class="timeline-time">18:00</div>
+        </div>
+        <div class="timeline-right">
+          <div class="timeline-line"></div>
+          <div class="timeline-label">
+            FORUM:<span class="title">Eröffnungskonzert</span>
+          </div>
+          <a class="timeline-button" href="#programm-1800-forum">Zum Programm</a>
+        </div>
+      </article>
+
+      <!-- 19:15 Mendelssohn -->
+      <article class="timeline-item">
+        <div class="timeline-time-block">
+          <div class="timeline-time">19:15</div>
+        </div>
+        <div class="timeline-right">
+          <div class="timeline-line"></div>
+          <div class="timeline-label">
+            MENDELSSOHN-SAAL:<span class="title">ZeitEnde</span>
+          </div>
+          <a class="timeline-button" href="#programm-1915-mendelssohn">Zum Programm</a>
+        </div>
+      </article>
+
+      <!-- 19:15 Orchesterstudio -->
+      <article class="timeline-item">
+        <div class="timeline-time-block">
+          <div class="timeline-time">19:15</div>
+        </div>
+        <div class="timeline-right">
+          <div class="timeline-line"></div>
+          <div class="timeline-label">
+            ORCHESTERSTUDIO:<span class="title">BachSchatten</span>
+          </div>
+          <a class="timeline-button" href="#programm-1915-orchesterstudio">Zum Programm</a>
+        </div>
+      </article>
+
+      <!-- 20:15 -->
+      <article class="timeline-item">
+        <div class="timeline-time-block">
+          <div class="timeline-time">20:15</div>
+        </div>
+        <div class="timeline-right">
+          <div class="timeline-line"></div>
+          <div class="timeline-label">
+            FORUM:<span class="title">Präludien</span>
+          </div>
+          <a class="timeline-button" href="#programm-2015-forum">Zum Programm</a>
+        </div>
+      </article>
+
+      <!-- 21:00 -->
+      <article class="timeline-item">
+        <div class="timeline-time-block">
+          <div class="timeline-time">21:00</div>
+        </div>
+        <div class="timeline-right">
+          <div class="timeline-line"></div>
+          <div class="timeline-label">
+            FANNY-HENSEL-SAAL:<span class="title">Leuchten</span>
+          </div>
+          <a class="timeline-button" href="#programm-2100-fanny">Zum Programm</a>
+        </div>
+      </article>
+
+      <!-- 21:20 neu -->
+      <article class="timeline-item">
+        <div class="timeline-time-block">
+          <div class="timeline-time">21:20</div>
+        </div>
+        <div class="timeline-right">
+          <div class="timeline-line"></div>
+          <div class="timeline-label">
+            FORUM:<span class="title">SonatenGeflecht</span>
+          </div>
+          <a class="timeline-button" href="#programm-2120-forum">Zum Programm</a>
+        </div>
+      </article>
+
+      <!-- 22:00 – Fanny-Hensel-Saal -->
+      <article class="timeline-item">
+        <div class="timeline-time-block">
+          <div class="timeline-time">22:00</div>
+        </div>
+        <div class="timeline-right">
+          <div class="timeline-line"></div>
+          <div class="timeline-label">
+            FANNY-HENSEL-SAAL:<span class="title">Konturen</span>
+          </div>
+          <a class="timeline-button" href="#programm-2200-forum">Zum Programm</a>
+        </div>
+      </article>
+
+      <!-- 22:45 -->
+      <article class="timeline-item">
+        <div class="timeline-time-block">
+          <div class="timeline-time">22:45</div>
+        </div>
+        <div class="timeline-right">
+          <div class="timeline-line"></div>
+          <div class="timeline-label">
+            MENDELSSOHN-SAAL:<span class="title">Bewegend</span>
+          </div>
+          <a class="timeline-button" href="#programm-2245-mendelssohn">Zum Programm</a>
+        </div>
+      </article>
+
+      <!-- 23:00 -->
+      <article class="timeline-item">
+        <div class="timeline-time-block">
+          <div class="timeline-time">23:00</div>
+        </div>
+        <div class="timeline-right">
+          <div class="timeline-line"></div>
+          <div class="timeline-label">
+            ORCHESTERSTUDIO:<span class="title">Zeichen</span>
+          </div>
+          <a class="timeline-button" href="#programm-2300-orchesterstudio">Zum Programm</a>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- 17:00 Mendelssohn-Saal – Auftakt -->
+  <section class="program-section" id="programm-1700-mendelssohn">
+    <a href="#timeline" class="back-to-timeline">
+      <span class="icon">←</span> Zurück zur Timeline
+    </a>
+    <p class="program-time">Zeit: 17:00 – 17:45</p>
+    <div class="hall-banner">
+      <h2 class="hall-name">Mendelssohn-Saal · 17:00 · Auftakt</h2>
+    </div>
+    <p class="program-intro">
+      Das 1940 entstandene Klavierquintett zählt zu den zugänglichsten Werken Schostakowitschs. Geschrieben in einer Phase relativer politischer Stabilität nach den großen Säuberungen, bewegt sich das Werk zwischen introvertierter Einkehr und demonstrativer Klarheit. Seine Verbindung von barocker Strenge und moderner Transparenz wirkt wie ein persönlicher Versuch, Ordnung in eine Zeit der ideologischen Unsicherheit zu bringen.
+    </p>
+    <ul class="program-list">
+      <li class="work">
+        <div class="composer">Dmitri Schostakowitsch</div>
+        <div class="work-title">Klavierquintett g-Moll, op. 57</div>
+        <div class="movements">
+          Prelude: Lento – Poco più mosso – Lento ·
+          Fuge: Adagio ·
+          Scherzo: Allegretto ·
+          Intermezzo: Lento ·
+          Finale: Allegretto
+        </div>
+        <div class="performers">
+          Wakako Matsubara – Violine<br>
+          Xueying Zhou – Violine<br>
+          Chien-Ying Pan – Viola<br>
+          Clara Eglhuber – Cello<br>
+          Daria Podushko – Klavier
+        </div>
+      </li>
+    </ul>
+  </section>
+
+  <!-- 17:15 Orchesterstudio – Horizonte -->
+  <section class="program-section" id="programm-1715-orchesterstudio">
+    <a href="#timeline" class="back-to-timeline">
+      <span class="icon">←</span> Zurück zur Timeline
+    </a>
+    <p class="program-time">Zeit: 17:15 – 17:50</p>
+    <div class="hall-banner">
+      <h2 class="hall-name">Orchesterstudio · 17:15 · Horizonte</h2>
+    </div>
+    <p class="program-intro">
+      Das Klaviertrio entstand 1944, mitten im Zweiten Weltkrieg, und ist als Trauerarbeit nach dem Tod von Schostakowitschs Freund Iwan Sollertinski zu verstehen. Die Widmung an ihn verleiht dem Werk eine besondere emotionalen Schwere. Die Musik schwankt zwischen elegischer Starre und bissiger Groteske; im Finale erscheinen jüdische Tanzmotive als Ausdruck von Überlebenswillen. Neben dem militärischen Kampf gegen den Nationalsozialismus stand die Sowjetunion zugleich unter strengster ideologischer Kontrolle.
+    </p>
+    <ul class="program-list">
+      <li class="work">
+        <div class="composer">Dmitri Schostakowitsch</div>
+        <div class="work-title">Klaviertrio Nr. 2 e-Moll, op. 67</div>
+        <div class="movements">
+          Andante – Moderato ·
+          Allegro con brio ·
+          Largo ·
+          Allegretto – Adagio
+        </div>
+        <div class="performers">
+          Ljudmila Minnibaeva – Violine<br>
+          Andreas Grünkorn – Cello<br>
+          Tinatin Gambashidze – Klavier
+        </div>
+      </li>
+    </ul>
+  </section>
+
+  <!-- 18:00 Forum – Eröffnungskonzert -->
+  <section class="program-section" id="programm-1800-forum">
+    <a href="#timeline" class="back-to-timeline">
+      <span class="icon">←</span> Zurück zur Timeline
+    </a>
+    <p class="program-time">Zeit: 18:00 – 19:00</p>
+    <div class="hall-banner">
+      <h2 class="hall-name">Forum · 18:00 · Eröffnungskonzert</h2>
+    </div>
+    <p class="program-intro">
+      Das Zweite Klavierkonzert, 1957 komponiert und dem Sohn Maxim zum 19. Geburtstag gewidmet, wirkt auf den ersten Blick heiter, trägt jedoch einen doppelten Boden: formale Leichtigkeit über einer brüchigen orchestralen Textur. Es entstand im „Tauwetter“ der Chruschtschow-Zeit, in der vorsichtige Öffnungen die erstarrten Jahre des Stalinismus ablösen sollten. Weinbergs 1991 vollendete Symphonie Nr. 21 „Kaddisch“ ist eine monumentale Erinnerungsarbeit an den Holocaust und an seine ermordete Familie; der Titel verweist auf das jüdische Totengebet. Weinberg, 1939 vor dem Nationalsozialismus nach Russland geflohen, lebte lange im Schatten sowjetischer Überwachung, erst die späte Perestroika ermöglichte eine freiere Auseinandersetzung mit jüdischer Thematik. Schostakowitschs Konzert Nr. 1 von 1933 ist ein frühes Beispiel seines satirischen Stils: Virtuosität, Zitatlust und abrupte Stimmungswechsel spiegeln die Unsicherheit der frühen Stalin-Ära. Das Werk ist weniger ein Klavier- als ein Doppelkonzert, da die Trompete eine nahezu gleichberechtigte Rolle spielt.
+    </p>
+    <ul class="program-list">
+      <li class="work">
+        <div class="composer">Dmitri Schostakowitsch</div>
+        <div class="work-title">Aus dem Klavierkonzert Nr. 2 F-Dur, op. 102</div>
+        <div class="movements">
+          Allegro
+        </div>
+        <div class="performers">
+          The Young ClassX: MJO (Felix Mendelssohn Jugendorchester)<br>
+          Clemens Malich – Dirigent<br>
+          Stepan Simonian – Klavier
+        </div>
+      </li>
+
+      <li class="work">
+        <div class="composer">Mieczyslaw Weinberg</div>
+        <div class="work-title">Aus der Symphonie Nr. 21, op. 152, „Kaddisch“</div>
+        <div class="movements">
+          Largo · Allegro molto
+        </div>
+        <div class="performers">
+          The Young ClassX: MJO (Felix Mendelssohn Jugendorchester)<br>
+          Clemens Malich – Dirigent
+        </div>
+      </li>
+
+      <li class="work">
+        <div class="composer">Dmitri Schostakowitsch</div>
+        <div class="work-title">
+          Konzert Nr. 1 c-Moll, op. 35 für Klavier, Trompete und Streicher
+        </div>
+        <div class="movements">
+          Allegretto · Lento · Moderato · Allegro con brio
+        </div>
+        <div class="performers">
+          Ensemble 13/14<br>
+          Ulrich Windfuhr – Dirigent<br>
+          Jiaming Li – Klavier<br>
+          Lisa Mimura – Trompete
+        </div>
+      </li>
+    </ul>
+  </section>
+
+  <!-- 19:15 Mendelssohn-Saal – ZeitEnde -->
+  <section class="program-section" id="programm-1915-mendelssohn">
+    <a href="#timeline" class="back-to-timeline">
+      <span class="icon">←</span> Zurück zur Timeline
+    </a>
+    <p class="program-time">Zeit: 19:15 – 20:00</p>
+    <div class="hall-banner">
+      <h2 class="hall-name">Mendelssohn-Saal · 19:15 · ZeitEnde</h2>
+    </div>
+    <p class="program-intro">
+      Messiaen komponierte das Quartett 1940/41 im Kriegsgefangenenlager Stalag VIII A; die Uraufführung fand dort statt, mit improvisierten Instrumenten und erfrorenen Fingern. Der Text aus der Apokalypse spricht von der Überwindung der Zeit – ein Gedanke, der in einem Europa, das im Krieg versank, wie ein leiser, unbeirrbarer Widerstand wirkte.
+    </p>
+    <p class="program-intro">
+      Die Entscheidung, dieses Werk neben das Klavierquintett von Schostakowitsch zu stellen, entstand aus dem Wunsch, zwei Meilensteine der Klavierkammermusik miteinander in Resonanz zu bringen. Beide entstanden fast gleichzeitig, von nahezu gleichaltrigen Komponisten – Schostakowitsch 1906 geboren, Messiaen 1908 – und doch unter radikal verschiedenen Bedingungen. Während Messiaen in Gefangenschaft schrieb, arbeitete Schostakowitsch im Schatten der persönlichen Schikane durch Stalin, der Hetze in der Presse und einer realen Bedrohung seines Lebens, von der er sich erst allmählich erholte. Beide Länder befanden sich im Krieg, Frankreich innerlich zerrissen, Russland 1941 noch unter dem deutsch-sowjetischen Nichtangriffspakt.
+    </p>
+    <p class="program-intro">
+      Gerade diese Konstellation macht die Gegenüberstellung so anziehend: Zwei Musiker, gefangen in der Härte ihrer Zeit, finden zu Ausdrucksformen, die unterschiedlicher kaum sein könnten – und doch denselben Wunsch teilen, das Menschliche im Klang zu bewahren.
+    </p>
+    <ul class="program-list">
+      <li class="work">
+        <div class="composer">Olivier Messiaen</div>
+        <div class="work-title">Quatuor pour la fin du temps</div>
+        <div class="movements">
+          Liturgie de cristal ·
+          Vocalise, pour l’Ange qui annonce la fin du Temps ·
+          Abîme des oiseaux ·
+          Intermède ·
+          Louange à l’Éternité de Jésus ·
+          Danse de la fureur, pour les sept trompettes ·
+          Fouillis d’arcs-en-ciel, pour l’Ange qui annonce la fin du Temps ·
+          Louange à l’Immortalität de Jésus
+        </div>
+        <div class="performers">
+          Roman Gerber – Klarinette<br>
+          Soyoung Park – Violine<br>
+          Benedikt Loos – Cello<br>
+          Antonio Di Dedda – Klavier
+        </div>
+      </li>
+    </ul>
+  </section>
+
+  <!-- 19:15 Orchesterstudio – BachSchatten -->
+  <section class="program-section" id="programm-1915-orchesterstudio">
+    <a href="#timeline" class="back-to-timeline">
+      <span class="icon">←</span> Zurück zur Timeline
+    </a>
+    <p class="program-time">Zeit: 19:15 – 21:45</p>
+    <div class="hall-banner">
+      <h2 class="hall-name">Orchesterstudio · 19:15 · BachSchatten</h2>
+    </div>
+    <p class="program-intro">
+      Die Sammlung der 24 Präludien und Fugen entstand 1950/51 nach Schostakowitschs Aufenthalt beim Bach-Wettbewerb in Leipzig. Inspiriert vom „Wohltemperierten Klavier“ schuf er eine moderne, oft ironisch gebrochene Hommage. Die Widmung an Tatjana Nikolajewa, die das Werk uraufführte, unterstreicht seine Nähe zur pianistischen Tradition. Die Sowjetunion war damals von Debatten über „Formalismus“ geprägt; Schostakowitsch setzte mit seinem Zyklus einen leisen, aber deutlichen Akzent künstlerischer Unabhängigkeit.
+    </p>
+    <ul class="program-list">
+      <li class="work">
+        <div class="composer">Dmitri Schostakowitsch</div>
+        <div class="work-title">24 Präludien und Fugen, op. 87</div>
+        <div class="movements">
+          C-Dur – Teodor Pazov<br>
+          a-Moll – Maximilian Müller<br>
+          G-Dur – Maximilian Müller<br>
+          e-Moll – Daria Podushko<br>
+          D-Dur – Chengcheng Zhang<br>
+          h-Moll – Teodor Pazov<br>
+          A-Dur – Roko Matijević<br>
+          fis-Moll – Joanna Sielicka<br>
+          E-Dur – Fabio Paez<br>
+          cis-Moll – Isaac Martinez<br>
+          H-Dur – Shuyi Wang<br>
+          gis-Moll – Elizaveta Don<br>
+          Fis-Dur – Eiby Zelnik<br>
+          es-Moll – Sergi Pacheco<br>
+          Des-Dur – Aleksandar Raos<br>
+          b-Moll – Matteo Weber<br>
+          As-Dur – Flora Stecher<br>
+          f-Moll – Kun U Chen<br>
+          Es-Dur – Viktoria Petkova<br>
+          c-Moll – Minyue Leng<br>
+          B-Dur – Viktoria Petkova<br>
+          g-Moll – Laetitia Dode<br>
+          F-Dur – Mert-Abdullah Çapan<br>
+          d-Moll – Yi-Teng Huang
+        </div>
+      </li>
+    </ul>
+  </section>
+
+  <!-- 20:15 Forum – Präludien -->
+  <section class="program-section" id="programm-2015-forum">
+    <a href="#timeline" class="back-to-timeline">
+      <span class="icon">←</span> Zurück zur Timeline
+    </a>
+    <p class="program-time">Zeit: 20:15 – 20:45</p>
+    <div class="hall-banner">
+      <h2 class="hall-name">Forum · 20:15 · Präludien</h2>
+    </div>
+    <p class="program-intro">
+      Die 1933 entstandenen Präludien op. 34 markieren eine Phase spielerischer Freiheit: kurze, pointierte Stücke, in denen Schostakowitsch rhythmisch leicht, experimentierfreudig und mit hörbarem Witz arbeitet. Zahlreiche Widmungen an befreundete Musiker zeichnen das Bild eines lebendigen Netzwerks in einer Zeit, in der die Kulturpolitik zwar bereits unter stalinistische Kontrolle geriet, sich jedoch noch im Übergang befand.
+    </p>
+    <p class="program-intro">
+      Gemeinsam mit der Cellosonate op. 40 gehören die Präludien zu den letzten Instrumentalwerken vor dem berüchtigten Zeitungsartikel „Chaos statt Musik“, der Schostakowitschs künstlerische Situation radikal veränderte. Danach wurde sein Stil spürbar konservativer; die provokante Freiheit dieser Stücke weicht später einer vorsichtigen Selbstzensur.
+    </p>
+    <p class="program-intro">
+      In diesem Konzert erscheinen die Präludien sowohl in ihrer ursprünglichen Klavierfassung als auch in einer Bearbeitung der Saxophonistin Asya Fateyeva. Dadurch entsteht ein reizvoller Dialog zwischen Original und Interpretation – ein Echo jener früheren Freiheit, das in andere Klangfarben übersetzt wird.
+    </p>
+    <ul class="program-list">
+      <li class="work">
+        <div class="composer">Dmitri Schostakowitsch</div>
+        <div class="work-title">24 Präludien, op. 34</div>
+        <div class="movements">
+          C-Dur: Moderato<br>
+          a-Moll: Allegretto<br>
+          G-Dur: Andante<br>
+          e-Moll: Moderato<br>
+          D-Dur: Allegro vivace<br>
+          h-Moll: Allegretto<br>
+          A-Dur: Andante<br>
+          fis-Moll: Allegretto<br>
+          E-Dur: Presto<br>
+          cis-Moll: Moderato non troppo<br>
+          H-Dur: Allegretto<br>
+          gis-Moll: Allegro non troppo<br>
+          Fis-Dur: Moderato<br>
+          es-Moll: Adagio<br>
+          Des-Dur: Allegretto<br>
+          b-Moll: Andantino<br>
+          As-Dur: Largo<br>
+          f-Moll: Allegretto<br>
+          Es-Dur: Andantino<br>
+          c-Moll: Allegretto furioso<br>
+          B-Dur: Allegretto poco moderato<br>
+          g-Moll: Adagio<br>
+          F-Dur: Moderato<br>
+          d-Moll: Allegretto
+        </div>
+        <div class="performers">
+          Asya Fateyeva – Saxophon<br>
+          Josefine Kardinar – Violine<br>
+          Aino Gribajcevic – Violine<br>
+          Anna Kreetta Gribajcevic – Bratsche<br>
+          Clemens Malich – Cello<br>
+          Marcello Biondi – Kontrabass<br>
+          Elizaveta Don – Klavier
+        </div>
+      </li>
+    </ul>
+  </section>
+
+  <!-- 21:00 Fanny-Hensel-Saal – Leuchten -->
+  <section class="program-section" id="programm-2100-fanny">
+    <a href="#timeline" class="back-to-timeline">
+      <span class="icon">←</span> Zurück zur Timeline
+    </a>
+    <p class="program-time">Zeit: 21:00 – 21:40</p>
+    <div class="hall-banner">
+      <h2 class="hall-name">Fanny-Hensel-Saal · 21:00 · Leuchten</h2>
+    </div>
+    <p class="program-intro">
+      Die 1901 vollendete Cellosonate, dem Cellisten Anatoli Brandukow gewidmet, entstand in einer Phase persönlicher Erholung und markiert Rachmaninows erneuten schöpferischen Aufbruch. Für dieses Programm wurde sie gewählt, um eine Brücke zu dem Russland zu schlagen, in das Rachmaninow hineingeboren wurde – ein kulturelles Umfeld, das wenige Jahre später durch die Revolution unwiederbringlich zerbrach. Rachmaninow empfand diesen Umbruch als persönliche Katastrophe; nach seiner Emigration verstummte er für mehr als fünfzehn Jahre als Komponist.
+    </p>
+    <p class="program-intro">
+      Schostakowitsch hingegen war ein „Kind der Revolution“, geprägt von völlig anderen gesellschaftlichen Voraussetzungen. Gerade dieser Gegensatz – hier die Klangwelt eines untergehenden alten Russlands, dort die künstlerische Prägung in einem neuen, ideologisch bestimmten Staat – macht die Gegenüberstellung der beiden Komponisten in diesem Konzert so reizvoll und aufschlussreich.
+    </p>
+    <ul class="program-list">
+      <li class="work">
+        <div class="composer">Sergei Rachmaninow</div>
+        <div class="work-title">Sonate für Cello und Klavier g-Moll, op. 19</div>
+        <div class="movements">
+          Lento Allegro moderato • Allegro scherzando • Andante • Allegro mosso
+        </div>
+        <div class="performers">
+          Clemens Malich – Cello<br>
+          Daria Parkhomenko – Klavier
+        </div>
+      </li>
+    </ul>
+  </section>
+
+  <!-- 21:20 Forum – SonatenGeflecht (neu) -->
+  <section class="program-section" id="programm-2120-forum">
+    <a href="#timeline" class="back-to-timeline">
+      <span class="icon">←</span> Zurück zur Timeline
+    </a>
+    <p class="program-time">Zeit: 21:20 – 23:00</p>
+    <div class="hall-banner">
+      <h2 class="hall-name">Forum · 21:20 · SonatenGeflecht</h2>
+    </div>
+    <p class="program-intro">
+      Die Violasonate op. 147 aus dem Jahr 1975 ist Schostakowitschs letzte vollendete Komposition. Sie ist seinem engen Freund Fjodor Druschinin gewidmet und entstand während schwerer Krankheit. Das Werk blickt hörbar zurück, sucht Nähe zum Spätstil Beethoven und entfaltet eine stille Resignation. In der politischen Stagnation der Breschnew-Ära wirkt die Sonate wie ein persönliches Abschiedsdokument. Die Violinsonate op. 134, 1968 für David Oistrach komponiert, zählt zu Schostakowitschs düstersten Spätwerken. Der politische Hintergrund – Prager Frühling, sowjetische Invasion und ein Klima tiefgreifender Verunsicherung – prägt die formale Strenge und die entrückte Ruhe des Finalsatzes. Die Cellosonate von 1934, Viktor Kubatzki gewidmet, entstand in einer frühen Phase des Stalinismus. Kulturelle Repressionen verschärften sich, doch der staatliche Druck war noch nicht vollständig erstarrt; das Werk bewahrt etwas von Schostakowitschs persönlicher Freiheit vor der kommenden ideologischen Enge.
+    </p>
+    <ul class="program-list">
+      <li class="work">
+        <div class="composer">Dmitri Schostakowitsch</div>
+        <div class="work-title">Sonate für Viola und Klavier, op. 147</div>
+        <div class="movements">
+          Moderato · Allegretto · Adagio
+        </div>
+        <div class="performers">
+          Anna Kreetta Gribajcevic – Bratsche<br>
+          Aleksandar Madzar – Klavier
+        </div>
+      </li>
+
+      <li class="work">
+        <div class="composer">Dmitri Schostakowitsch</div>
+        <div class="work-title">Sonate für Violine und Klavier, op. 134</div>
+        <div class="movements">
+          Andante · Allegretto · Largo
+        </div>
+        <div class="performers">
+          Tanja Becker-Bender – Violine<br>
+          Aleksandar Madzar – Klavier
+        </div>
+      </li>
+
+      <li class="work">
+        <div class="composer">Dmitri Schostakowitsch</div>
+        <div class="work-title">Sonate für Cello und Klavier, op. 40</div>
+        <div class="movements">
+          Allegro non troppo · Allegro · Largo · Allegro
+        </div>
+        <div class="performers">
+          Sebastian Klinger – Cello<br>
+          Aleksandar Madzar – Klavier
+        </div>
+      </li>
+    </ul>
+  </section>
+
+  <!-- 22:00 – Fanny-Hensel-Saal – Konturen -->
+  <section class="program-section" id="programm-2200-forum">
+    <a href="#timeline" class="back-to-timeline">
+      <span class="icon">←</span> Zurück zur Timeline
+    </a>
+    <p class="program-time">Zeit: 22:00 – 22:30</p>
+    <div class="hall-banner">
+      <h2 class="hall-name">Fanny-Hensel-Saal · 22:00 · Konturen</h2>
+    </div>
+    <p class="program-intro">
+      Die fünf Präludien op. 2 (1907/08) dokumentieren den frühen Stil des jungen Schostakowitschs: verspielt, formbewusst und mit wachem Ohr für neue Ausdrucksmöglichkeiten. Russland befand sich kurz nach der Revolution von 1905 weiterhin in politischer Spannung. Die Drei Fantastischen Tänze, 1920–22 während Hunger und Bürgerkrieg entstanden, sind knapp, ironisch und rhythmisch scharf konturiert – frühe Zeugnisse einer satirischen Handschrift. Die Aphorismen op. 13 von 1927 verdichten jugendlichen Experimentierwillen in ultrakurzen Charakterstücken; sie verbinden absurden Humor mit präziser Formschärfe. Das „Notenbuch eines Kindes“, 1944 für seine Tochter Galina geschrieben, zeigt einen selten privaten Tonfall zwischen Märchen, Spiel und stiller Traurigkeit – ein Moment familiärer Nähe inmitten des Krieges.
+    </p>
+    <ul class="program-list">
+      <li class="work">
+        <div class="composer">Dmitri Schostakowitsch</div>
+        <div class="work-title">5 Präludien, op. 2</div>
+        <div class="movements">
+          Allegro moderato e scherzando ·
+          Andante ·
+          Allegro moderato ·
+          Moderato ·
+          Andantino
+        </div>
+        <div class="performers">
+          Konstantin Egensperger – Klavier
+        </div>
+      </li>
+
+      <li class="work">
+        <div class="composer">Dmitri Schostakowitsch</div>
+        <div class="work-title">3 Phantastische Tänze, op. 5</div>
+        <div class="movements">
+          Marsch: Allegretto ·
+          Walzer: Andantino ·
+          Polka: Allegretto
+        </div>
+        <div class="performers">
+          Yanhao Yang – Klavier
+        </div>
+      </li>
+
+      <li class="work">
+        <div class="composer">Dmitri Schostakowitsch</div>
+        <div class="work-title">Aphorismen, op. 13</div>
+        <div class="movements">
+          Rezitativ · Serenade · Nocturne · Elegie ·
+          Trauermarsch · Etüde · Totentanz ·
+          Kanon · Legende · Wiegenlied
+        </div>
+        <div class="performers">
+          Amos Werner – Klavier
+        </div>
+      </li>
+
+      <li class="work">
+        <div class="composer">Dmitri Schostakowitsch</div>
+        <div class="work-title">Notenbuch eines Kindes, op. 69 &amp; Polka</div>
+        <div class="movements">
+          Notenbuch eines Kindes, op. 69:<br>
+          Marsch · Walzer · Bär · Lustiges Märchen ·
+          Trauriges Märchen · Die Aufziehpuppe · Geburtstag<br><br>
+          Polka für Klavier solo
+        </div>
+        <div class="performers">
+          Sebastian Zaczek – Klavier
+        </div>
+      </li>
+    </ul>
+  </section>
+
+  <!-- 22:45 Mendelssohn-Saal – Bewegend -->
+  <section class="program-section" id="programm-2245-mendelssohn">
+    <a href="#timeline" class="back-to-timeline">
+      <span class="icon">←</span> Zurück zur Timeline
+    </a>
+    <p class="program-time">Zeit: 22:45 – offen</p>
+    <div class="hall-banner">
+      <h2 class="hall-name">Mendelssohn-Saal · 22:45 · Bewegend</h2>
+    </div>
+    <p class="program-intro">
+      Die Klaviersonate Nr. 1 von 1926 ist ein Dokument jugendlicher Radikalität: modernistisch, energiegeladen, kantig. In der frühen Sowjetunion war die Avantgarde noch möglich, bevor politische Vorgaben das Ausdrucksspektrum einengten.
+    </p>
+    <p class="program-intro">
+      Die zweite Klaviersonate, 1943 entstanden, ist ein deutlich introspektiveres Werk: Musik der Kriegsjahre, durchzogen von Verlust, Müdigkeit und ernster Konzentration. Gewidmet ist sie dem Andenken an Leonid Nikolajew, Schostakowitschs Klavierprofessor am Leningrader Konservatorium – ein legendärer Pädagoge, zu dessen Schülerinnen und Schülern unter anderem Mariya Yudina und Vladimir Sofronitsky gehörten.
+    </p>
+    <p class="program-intro">
+      Die „Puppentänze“ der 1950er-Jahre entfalten humorvolle Miniaturen mit feiner Ironie unter kindlich anmutender Oberfläche.
+    </p>
+    <p class="program-intro">
+      Das Concertino op. 94 von 1953, für zwei Klaviere geschrieben und häufig als Stück für den Sohn Maxim bezeichnet, zeigt einen transparenten, neoklassischen Ton und eine fast heitere Unbekümmertheit.
+    </p>
+    <ul class="program-list">
+      <li class="work">
+        <div class="composer">Dmitri Schostakowitsch</div>
+        <div class="work-title">Klaviersonate Nr. 1, op. 12</div>
+        <div class="performers">
+          Malte Henrik Gohr – Klavier
+        </div>
+      </li>
+
+      <li class="work">
+        <div class="composer">Dmitri Schostakowitsch</div>
+        <div class="work-title">Sonate Nr. 2 h-Moll, op. 61</div>
+        <div class="movements">
+          Allegretto · Largo · Moderato
+        </div>
+        <div class="performers">
+          Caroline Weichert – Klavier
+        </div>
+      </li>
+
+      <li class="work">
+        <div class="composer">Dmitri Schostakowitsch</div>
+        <div class="work-title">7 Puppentänze</div>
+        <div class="movements">
+          Lyrischer Walzer · Gavotte · Romanze ·
+          Polka · Walzer-Scherzo · Leierkasten · Tanz
+        </div>
+        <div class="performers">
+          Caroline Weichert – Klavier
+        </div>
+      </li>
+
+      <li class="work">
+        <div class="composer">Dmitri Schostakowitsch</div>
+        <div class="work-title">Concertino a-Moll für 2 Klaviere, op. 94</div>
+        <div class="performers">
+          Julia Cao &amp; Xinran Gong – Klavier
+        </div>
+      </li>
+
+      <li class="work">
+        <div class="composer">Dmitri Schostakowitsch</div>
+        <div class="work-title">Tarantella für 2 Klaviere</div>
+        <div class="performers">
+          Caroline Weichert &amp; Elizaveta Don – Klavier
+        </div>
+      </li>
+
+      <li class="work">
+        <div class="composer">Dmitri Schostakowitsch</div>
+        <div class="work-title">Fröhlicher Marsch für 2 Klaviere</div>
+        <div class="performers">
+          Caroline Weichert &amp; Elizaveta Don – Klavier
+        </div>
+      </li>
+    </ul>
+  </section>
+
+  <!-- 23:00 Orchesterstudio – Zeichen -->
+  <section class="program-section" id="programm-2300-orchesterstudio">
+    <a href="#timeline" class="back-to-timeline">
+      <span class="icon">←</span> Zurück zur Timeline
+    </a>
+    <p class="program-time">Zeit: 23:00 – 23:25</p>
+    <div class="hall-banner">
+      <h2 class="hall-name">Orchesterstudio · 23:00 · Zeichen</h2>
+    </div>
+    <p class="program-intro">
+      Die 1953 entstandene fünfte Violinsonate Weinbergs fällt in das Jahr von Stalins Tod – ein politischer Wendepunkt. Weinberg stand damals unter massivem Druck und war zeitweise inhaftiert. Die Sonate ist geprägt von intensiver Melancholie, energischer Motorik und einer inneren Unruhe, die die Unsicherheiten dieser Übergangszeit eindringlich hörbar macht.
+    </p>
+    <ul class="program-list">
+      <li class="work">
+        <div class="composer">Mieczyslaw Weinberg</div>
+        <div class="work-title">Sonate für Violine und Klavier Nr. 5, op. 53</div>
+        <div class="movements">
+          Andante con moto · Allegro molto · Allegro moderato · Allegro
+        </div>
+        <div class="performers">
+          Tanja Becker-Bender – Violine<br>
+          Stepan Simonian – Klavier
+        </div>
+      </li>
+    </ul>
+  </section>
+
+</main>
+
+<footer>
+  Dissonanz der Macht · Digitales Programmheft – HfMT Hamburg
+</footer>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    document.body.classList.add("loaded");
+
+    document.querySelectorAll(".back-to-timeline").forEach(link => {
+      link.addEventListener("click", function () {
+        document.body.classList.remove("loaded");
+        setTimeout(() => {
+          document.body.classList.add("loaded");
+        }, 20);
+      });
+    });
+  });
+</script>
+
+</body>
+</html>
