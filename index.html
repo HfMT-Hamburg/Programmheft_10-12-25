@@ -64,7 +64,7 @@
 
     section { margin-bottom: 2.5rem; }
 
-    /* INTRO-BEREICH (nur Text) */
+    /* INTRO-BEREICH */
 
     .intro-section {
       display: flex;
@@ -91,7 +91,7 @@
       font-size: 0.95rem;
     }
 
-    /* TIMELINE – Layout im ursprünglichen Stil, rechts alles in einer Zeile */
+    /* TIMELINE */
 
     .timeline-section h2 {
       font-size: 1.2rem;
@@ -355,6 +355,123 @@
         align-self: flex-start;
       }
     }
+
+    /* INFO-BUTTON */
+
+    .artist-info-trigger {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 1.1rem;
+      height: 1.1rem;
+      border-radius: 50%;
+      border: 1px solid var(--accent);
+      font-size: 0.7rem;
+      margin-right: 0.35rem;
+      background: transparent;
+      cursor: pointer;
+      padding: 0;
+      line-height: 1;
+    }
+
+    .artist-info-trigger:hover {
+      background: var(--accent);
+      color: #111;
+    }
+
+    /* MODAL */
+
+    .artist-modal-backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.45);
+      display: none;
+      align-items: flex-start;
+      justify-content: center;
+      padding: 1.5rem;
+      z-index: 1000;
+    }
+
+    .artist-modal-backdrop.is-open {
+      display: flex;
+    }
+
+    .artist-modal {
+      background: var(--accent);
+      color: #000000;
+      max-width: 640px;
+      width: 100%;
+      border-radius: 10px;
+      padding: 1.2rem 1.4rem 1.2rem;
+      position: relative;
+      box-shadow: 0 18px 35px rgba(0, 0, 0, 0.35);
+      margin-top: 3.5rem;
+      max-height: calc(100vh - 5rem);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .artist-modal-header {
+      background: #ffffff;
+      color: var(--accent);
+      border-radius: 8px;
+      padding: 0.6rem 0.9rem;
+      margin-bottom: 0.8rem;
+      position: sticky;
+      top: 0;
+      z-index: 2;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.75rem;
+    }
+
+    .artist-modal-header h3 {
+      margin: 0;
+      font-size: 1.05rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    .artist-modal-close {
+      background: transparent;
+      border: none;
+      font-size: 1.4rem;
+      line-height: 1;
+      cursor: pointer;
+      padding: 0;
+      color: var(--accent);
+      flex-shrink: 0;
+    }
+
+    .artist-modal-close:hover {
+      opacity: 0.8;
+    }
+
+    .artist-modal-body {
+      color: #000000;
+      font-size: 0.95rem;
+      line-height: 1.7;
+      overflow-y: auto;
+      padding-right: 0.3rem;
+      flex: 1;
+      min-height: 0;
+    }
+
+    .artist-modal-body p {
+      margin: 0 0 0.65rem 0;
+    }
+
+    @media (max-width: 600px) {
+      .artist-modal {
+        padding: 1rem 1rem 1rem;
+        margin-top: 3.2rem;
+      }
+
+      .artist-modal-header h3 {
+        font-size: 0.95rem;
+      }
+    }
   </style>
 </head>
 
@@ -369,7 +486,7 @@
 
 <main>
 
-  <!-- INTRO NUR TEXT -->
+  <!-- INTRO -->
   <section class="intro-section">
     <div class="intro-blocks">
       <article class="intro-block">
@@ -396,7 +513,7 @@
           Dieser Abend richtet den Blick auf einen Komponisten, der im Spannungsfeld zwischen staatlicher Kontrolle und künstlerischer Integrität arbeitete. Schostakowitsch musste sich den Vorgaben des stalinistischen Regimes beugen und wurde zugleich wiederholt als „Formalist“ verurteilt. Dennoch entwickelte er Strategien, um seine ästhetische Haltung zu bewahren und musikalische Aussagen zu formulieren, die das Offizielle unterlaufen.
         </p>
         <p>
-          Die Dramaturgie des Abends folgt dieser Doppelbewegung: Anpassung in der Oberfläche, Widerstand im Kern. In den ausgewählten Werken wird hörbar, wie Schостакowitsch emotionale Wahrheiten verschlüsselte und Räume eröffnete, in denen individuelle Erfahrung trotz politischer Überwachung Bestand haben konnte. Angesichts der aktuellen Lage in Russland und eines Regimes, das erneut Opposition unterdrückt und Kritik zum Verstummen bringen will, erhält diese Musik bedrückende Aktualität. Sie erinnert daran, dass Macht sich stets an der Kunst reibt – und dass Kunst eine ihrer wirksamsten Gegenkräfte bleibt.
+          Die Dramaturgie des Abends folgt dieser Doppelbewegung: Anpassung in der Oberfläche, Widerstand im Kern. In den ausgewählten Werken wird hörbar, wie Schostakowitsch emotionale Wahrheiten verschlüsselte und Räume eröffnete, in denen individuelle Erfahrung trotz politischer Überwachung Bestand haben konnte. Angesichts der aktuellen Lage in Russland und eines Regimes, das erneut Opposition unterdrückt und Kritik zum Verstummen bringen will, erhält diese Musik bedrückende Aktualität. Sie erinnert daran, dass Macht sich stets an der Kunst reibt – und dass Kunst eine ihrer wirksamsten Gegenkräfte bleibt.
         </p>
         <p>
           Mein Dank gilt den Studierenden und Kolleg*innen, deren Engagement, Disziplin und Offenheit diesen Abend erst ermöglicht haben.<br>
@@ -454,7 +571,7 @@
         </div>
       </article>
 
-      <!-- 19:15 Mendelssohn-Saal – ZeitEnde -->
+      <!-- 19:15 ZeitEnde -->
       <article class="timeline-item">
         <div class="timeline-time-block">
           <div class="timeline-time">19:15</div>
@@ -468,7 +585,7 @@
         </div>
       </article>
 
-      <!-- 19:15 Orchesterstudio – BachSchatten -->
+      <!-- 19:15 BachSchatten -->
       <article class="timeline-item">
         <div class="timeline-time-block">
           <div class="timeline-time">19:15</div>
@@ -510,7 +627,7 @@
         </div>
       </article>
 
-      <!-- 21:00 -->
+      <!-- 21:00 Leuchten -->
       <article class="timeline-item">
         <div class="timeline-time-block">
           <div class="timeline-time">21:00</div>
@@ -524,7 +641,7 @@
         </div>
       </article>
 
-      <!-- 21:20 neu -->
+      <!-- 21:20 SonatenGeflecht -->
       <article class="timeline-item">
         <div class="timeline-time-block">
           <div class="timeline-time">21:20</div>
@@ -538,7 +655,7 @@
         </div>
       </article>
 
-      <!-- 22:00 – Fanny-Hensel-Saal -->
+      <!-- 22:00 Konturen -->
       <article class="timeline-item">
         <div class="timeline-time-block">
           <div class="timeline-time">22:00</div>
@@ -552,7 +669,7 @@
         </div>
       </article>
 
-      <!-- 22:45 -->
+      <!-- 22:45 Bewegend -->
       <article class="timeline-item">
         <div class="timeline-time-block">
           <div class="timeline-time">22:45</div>
@@ -566,7 +683,7 @@
         </div>
       </article>
 
-      <!-- 23:00 -->
+      <!-- 23:00 Zeichen -->
       <article class="timeline-item">
         <div class="timeline-time-block">
           <div class="timeline-time">23:00</div>
@@ -583,7 +700,7 @@
     </div>
   </section>
 
-  <!-- 17:00 Mendelssohn-Saal – Auftakt -->
+  <!-- 17:00 Auftakt -->
   <section class="program-section" id="programm-1700-mendelssohn">
     <a href="#timeline" class="back-to-timeline">
       <span class="icon">←</span> Zurück zur Timeline
@@ -617,7 +734,7 @@
     </ul>
   </section>
 
-  <!-- 17:15 Orchesterstudio – Horizonte -->
+  <!-- 17:15 Horizonte -->
   <section class="program-section" id="programm-1715-orchesterstudio">
     <a href="#timeline" class="back-to-timeline">
       <span class="icon">←</span> Zurück zur Timeline
@@ -640,15 +757,15 @@
           Allegretto – Adagio
         </div>
         <div class="performers">
-          Ljudmila Minnibaeva – Violine<br>
-          Andreas Grünkorn – Cello<br>
-          Tinatin Gambashidze – Klavier
+          <button class="artist-info-trigger" data-artist="ljudmila-minnibaeva" aria-label="Information zu Ljudmila Minnibaeva">i</button> Ljudmila Minnibaeva – Violine<br>
+          <button class="artist-info-trigger" data-artist="andreas-gruenkorn" aria-label="Information zu Andreas Grünkorn">i</button> Andreas Grünkorn – Cello<br>
+          <button class="artist-info-trigger" data-artist="tinatin-gambashidze" aria-label="Information zu Tinatin Gambashidze">i</button> Tinatin Gambashidze – Klavier
         </div>
       </li>
     </ul>
   </section>
 
-  <!-- 18:00 Forum – Eröffnungskonzert -->
+  <!-- 18:00 Eröffnungskonzert -->
   <section class="program-section" id="programm-1800-forum">
     <a href="#timeline" class="back-to-timeline">
       <span class="icon">←</span> Zurück zur Timeline
@@ -669,8 +786,8 @@
         </div>
         <div class="performers">
           The Young ClassX: MJO (Felix Mendelssohn Jugendorchester)<br>
-          Clemens Malich – Dirigent<br>
-          Stepan Simonian – Klavier
+          <button class="artist-info-trigger" data-artist="clemens-malich" aria-label="Information zu Clemens Malich">i</button> Clemens Malich – Dirigent<br>
+          <button class="artist-info-trigger" data-artist="stepan-simonian" aria-label="Information zu Stepan Simonian">i</button> Stepan Simonian – Klavier
         </div>
       </li>
 
@@ -682,7 +799,7 @@
         </div>
         <div class="performers">
           The Young ClassX: MJO (Felix Mendelssohn Jugendorchester)<br>
-          Clemens Malich – Dirigent
+          <button class="artist-info-trigger" data-artist="clemens-malich" aria-label="Information zu Clemens Malich">i</button> Clemens Malich – Dirigent
         </div>
       </li>
 
@@ -696,7 +813,7 @@
         </div>
         <div class="performers">
           Ensemble 13/14<br>
-          Ulrich Windfuhr – Dirigent<br>
+          Philine Lembeck – Dirigentin<br>
           Jiaming Li – Klavier<br>
           Lisa Mimura – Trompete
         </div>
@@ -704,7 +821,7 @@
     </ul>
   </section>
 
-  <!-- 19:15 Orchesterstudio – ZeitEnde -->
+  <!-- 19:15 ZeitEnde -->
   <section class="program-section" id="programm-1915-mendelssohn">
     <a href="#timeline" class="back-to-timeline">
       <span class="icon">←</span> Zurück zur Timeline
@@ -732,7 +849,7 @@
           Abîme des oiseaux ·
           Intermède ·
           Louange à l’Éternité de Jésus ·
-          Danse de la fureur, pour les sept trompettes ·
+          Danse de la fureur, für les sept trompettes ·
           Fouillis d’arcs-en-ciel, pour l’Ange qui annonce la fin du Temps ·
           Louange à l’Immortalität de Jésus
         </div>
@@ -740,13 +857,13 @@
           Roman Gerber – Klarinette<br>
           Soyoung Park – Violine<br>
           Benedikt Loos – Cello<br>
-          Antonio Di Dedda – Klavier
+          <button class="artist-info-trigger" data-artist="antonio-di-dedda" aria-label="Information zu Antonio Di Dedda">i</button> Antonio Di Dedda – Klavier
         </div>
       </li>
     </ul>
   </section>
 
-  <!-- 19:15 Mendelssohn-Saal – BachSchatten -->
+  <!-- 19:15 BachSchatten -->
   <section class="program-section" id="programm-1915-orchesterstudio">
     <a href="#timeline" class="back-to-timeline">
       <span class="icon">←</span> Zurück zur Timeline
@@ -792,7 +909,7 @@
     </ul>
   </section>
 
-  <!-- 20:15 Forum – Präludien -->
+  <!-- 20:15 Präludien -->
   <section class="program-section" id="programm-2015-forum">
     <a href="#timeline" class="back-to-timeline">
       <span class="icon">←</span> Zurück zur Timeline
@@ -841,19 +958,19 @@
           d-Moll: Allegretto
         </div>
         <div class="performers">
-          Asya Fateyeva – Saxophon<br>
+          <button class="artist-info-trigger" data-artist="asya-fateyeva" aria-label="Information zu Asya Fateyeva">i</button> Asya Fateyeva – Saxophon<br>
           Josefine Kardinar – Violine<br>
           Aino Gribajcevic – Violine<br>
-          Anna Kreetta Gribajcevic – Bratsche<br>
-          Clemens Malich – Cello<br>
+          <button class="artist-info-trigger" data-artist="anna-kreetta-gribajcevic" aria-label="Information zu Anna Kreetta Gribajcevic">i</button> Anna Kreetta Gribajcevic – Bratsche<br>
+          <button class="artist-info-trigger" data-artist="clemens-malich" aria-label="Information zu Clemens Malich">i</button> Clemens Malich – Cello<br>
           Marcello Biondi – Kontrabass<br>
-          Elizaveta Don – Klavier
+          <button class="artist-info-trigger" data-artist="elizaveta-don" aria-label="Information zu Elizaveta Don">i</button> Elizaveta Don – Klavier
         </div>
       </li>
     </ul>
   </section>
 
-  <!-- 20:50 Fanny-Hensel-Saal – Narben -->
+  <!-- 20:50 Narben -->
   <section class="program-section" id="programm-2150-fanny">
     <a href="#timeline" class="back-to-timeline">
       <span class="icon">←</span> Zurück zur Timeline
@@ -885,7 +1002,7 @@
     </ul>
   </section>
 
-  <!-- 21:00 Fanny/Orchesterstudio – Leuchten -->
+  <!-- 21:00 Leuchten -->
   <section class="program-section" id="programm-2100-fanny">
     <a href="#timeline" class="back-to-timeline">
       <span class="icon">←</span> Zurück zur Timeline
@@ -905,17 +1022,17 @@
         <div class="composer">Sergei Rachmaninow</div>
         <div class="work-title">Sonate für Cello und Klavier g-Moll, op. 19</div>
         <div class="movements">
-          Lento Allegro moderato • Allegro scherzando • Andante • Allegro mosso
+          Lento Allegro moderato · Allegro scherzando · Andante · Allegro mosso
         </div>
         <div class="performers">
-          Clemens Malich – Cello<br>
-          Daria Parkhomenko – Klavier
+          <button class="artist-info-trigger" data-artist="clemens-malich" aria-label="Information zu Clemens Malich">i</button> Clemens Malich – Cello<br>
+          <button class="artist-info-trigger" data-artist="daria-parkhomenko" aria-label="Information zu Daria Parkhomenko">i</button> Daria Parkhomenko – Klavier
         </div>
       </li>
     </ul>
   </section>
 
-  <!-- 21:20 Forum – SonatenGeflecht (neu) -->
+  <!-- 21:20 SonatenGeflecht -->
   <section class="program-section" id="programm-2120-forum">
     <a href="#timeline" class="back-to-timeline">
       <span class="icon">←</span> Zurück zur Timeline
@@ -925,33 +1042,10 @@
       <h2 class="hall-name">Forum · 21:20 · SonatenGeflecht</h2>
     </div>
     <p class="program-intro">
-      Die Violasonate op. 147 aus dem Jahr 1975 ist Schostakowitschs letzte vollendete Komposition. Sie ist seinem engen Freund Fjodor Druschinin gewidmet und entstand während schwerer Krankheit. Das Werk blickt hörbar zurück, sucht Nähe zum Spätstil Beethoven und entfaltet eine stille Resignation. In der politischen Stagnation der Breschnew-Ära wirkt die Sonate wie ein persönliches Abschiedsdokument. Die Violinsonate op. 134, 1968 für David Oistrach komponiert, zählt zu Schostakowitschs düstersten Spätwerken. Der politische Hintergrund – Prager Frühling, sowjetische Invasion und ein Klima tiefgreifender Verunsicherung – prägt die formale Strenge und die entrückte Ruhe des Finalsatzes. Die Cellosonate von 1934, Viktor Kubatzki gewidmet, entstand in einer frühen Phase des Stalinismus. Kulturelle Repressionen verschärften sich, doch der staatliche Druck war noch nicht vollständig erstarrt; das Werk bewahrt etwas von Schostakowitschs persönlicher Freiheit vor der kommenden ideologischen Enge.
+      Die Cellosonate von 1934, Viktor Kubatzki gewidmet, entstand in einer frühen Phase des Stalinismus. Kulturelle Repressionen verschärften sich, doch der staatliche Druck war noch nicht vollständig erstarrt; das Werk bewahrt etwas von Schostakowitschs persönlicher Freiheit vor der kommenden ideologischen Enge. Die Violinsonate op. 134, 1968 für David Oistrach komponiert, zählt zu Schostakowitschs düstersten Spätwerken. Der politische Hintergrund – Prager Frühling, sowjetische Invasion und ein Klima tiefgreifender Verunsicherung – prägt die formale Strenge und die entrückte Ruhe des Finalsatzes. Die Violasonate op. 147 aus dem Jahr 1975 schließlich ist Schostakowitschs letzte vollendete Komposition. Sie ist seinem engen Freund Fjodor Druschinin gewidmet und entstand während schwerer Krankheit – ein persönliches Abschiedsdokument in Zeiten politischer Stagnation der Breschnew-Ära.
     </p>
     <ul class="program-list">
-      <li class="work">
-        <div class="composer">Dmitri Schostakowitsch</div>
-        <div class="work-title">Sonate für Viola und Klavier, op. 147</div>
-        <div class="movements">
-          Moderato · Allegretto · Adagio
-        </div>
-        <div class="performers">
-          Anna Kreetta Gribajcevic – Bratsche<br>
-          Aleksandar Madzar – Klavier
-        </div>
-      </li>
-
-      <li class="work">
-        <div class="composer">Dmitri Schostakowitsch</div>
-        <div class="work-title">Sonate für Violine und Klavier, op. 134</div>
-        <div class="movements">
-          Andante · Allegretto · Largo
-        </div>
-        <div class="performers">
-          Tanja Becker-Bender – Violine<br>
-          Aleksandar Madzar – Klavier
-        </div>
-      </li>
-
+      <!-- NEUE REIHENFOLGE: zuerst op. 40 -->
       <li class="work">
         <div class="composer">Dmitri Schostakowitsch</div>
         <div class="work-title">Sonate für Cello und Klavier, op. 40</div>
@@ -959,14 +1053,40 @@
           Allegro non troppo · Allegro · Largo · Allegro
         </div>
         <div class="performers">
-          Sebastian Klinger – Cello<br>
-          Aleksandar Madzar – Klavier
+          <button class="artist-info-trigger" data-artist="sebastian-klinger" aria-label="Information zu Sebastian Klinger">i</button> Sebastian Klinger – Cello<br>
+          <button class="artist-info-trigger" data-artist="aleksandar-madzar" aria-label="Information zu Aleksandar Madžar">i</button> Aleksandar Madžar – Klavier
+        </div>
+      </li>
+
+      <!-- op. 134 bleibt zweite Position -->
+      <li class="work">
+        <div class="composer">Dmitri Schostakowitsch</div>
+        <div class="work-title">Sonate für Violine und Klavier, op. 134</div>
+        <div class="movements">
+          Andante · Allegretto · Largo
+        </div>
+        <div class="performers">
+          <button class="artist-info-trigger" data-artist="tanja-becker-bender" aria-label="Information zu Tanja Becker-Bender">i</button> Tanja Becker-Bender – Violine<br>
+          <button class="artist-info-trigger" data-artist="aleksandar-madzar" aria-label="Information zu Aleksandar Madžar">i</button> Aleksandar Madžar – Klavier
+        </div>
+      </li>
+
+      <!-- op. 147 jetzt zum Schluss -->
+      <li class="work">
+        <div class="composer">Dmitri Schostakowitsch</div>
+        <div class="work-title">Sonate für Viola und Klavier, op. 147</div>
+        <div class="movements">
+          Moderato · Allegretto · Adagio
+        </div>
+        <div class="performers">
+          <button class="artist-info-trigger" data-artist="anna-kreetta-gribajcevic" aria-label="Information zu Anna Kreetta Gribajcevic">i</button> Anna Kreetta Gribajcevic – Bratsche<br>
+          <button class="artist-info-trigger" data-artist="aleksandar-madzar" aria-label="Information zu Aleksandar Madžar">i</button> Aleksandar Madžar – Klavier
         </div>
       </li>
     </ul>
   </section>
 
-  <!-- 22:00 – Fanny-Hensel-Saal – Konturen -->
+  <!-- 22:00 Konturen -->
   <section class="program-section" id="programm-2200-forum">
     <a href="#timeline" class="back-to-timeline">
       <span class="icon">←</span> Zurück zur Timeline
@@ -1036,7 +1156,7 @@
     </ul>
   </section>
 
-  <!-- 22:45 Mendelssohn-Saal – Bewegend -->
+  <!-- 22:45 Bewegend -->
   <section class="program-section" id="programm-2245-mendelssohn">
     <a href="#timeline" class="back-to-timeline">
       <span class="icon">←</span> Zurück zur Timeline
@@ -1073,7 +1193,7 @@
           Allegretto · Largo · Moderato
         </div>
         <div class="performers">
-          Caroline Weichert – Klavier
+          <button class="artist-info-trigger" data-artist="caroline-weichert" aria-label="Information zu Caroline Weichert">i</button> Caroline Weichert – Klavier
         </div>
       </li>
 
@@ -1085,7 +1205,7 @@
           Polka · Walzer-Scherzo · Leierkasten · Tanz
         </div>
         <div class="performers">
-          Caroline Weichert – Klavier
+          <button class="artist-info-trigger" data-artist="caroline-weichert" aria-label="Information zu Caroline Weichert">i</button> Caroline Weichert – Klavier
         </div>
       </li>
 
@@ -1101,7 +1221,7 @@
         <div class="composer">Dmitri Schostakowitsch</div>
         <div class="work-title">Tarantella für 2 Klaviere</div>
         <div class="performers">
-          Caroline Weichert &amp; Elizaveta Don – Klavier
+          <button class="artist-info-trigger" data-artist="caroline-weichert" aria-label="Information zu Caroline Weichert">i</button> Caroline Weichert &amp; <button class="artist-info-trigger" data-artist="elizaveta-don" aria-label="Information zu Elizaveta Don">i</button> Elizaveta Don – Klavier
         </div>
       </li>
 
@@ -1109,13 +1229,13 @@
         <div class="composer">Dmitri Schostakowitsch</div>
         <div class="work-title">Fröhlicher Marsch für 2 Klaviere</div>
         <div class="performers">
-          Caroline Weichert &amp; Elizaveta Don – Klavier
+          <button class="artist-info-trigger" data-artist="caroline-weichert" aria-label="Information zu Caroline Weichert">i</button> Caroline Weichert &amp; <button class="artist-info-trigger" data-artist="elizaveta-don" aria-label="Information zu Elizaveta Don">i</button> Elizaveta Don – Klavier
         </div>
       </li>
     </ul>
   </section>
 
-  <!-- 23:00 Orchesterstudio – Zeichen -->
+  <!-- 23:00 Zeichen -->
   <section class="program-section" id="programm-2300-orchesterstudio">
     <a href="#timeline" class="back-to-timeline">
       <span class="icon">←</span> Zurück zur Timeline
@@ -1135,8 +1255,8 @@
           Andante con moto · Allegro molto · Allegro moderato · Allegro
         </div>
         <div class="performers">
-          Tanja Becker-Bender – Violine<br>
-          Stepan Simonian – Klavier
+          <button class="artist-info-trigger" data-artist="tanja-becker-bender" aria-label="Information zu Tanja Becker-Bender">i</button> Tanja Becker-Bender – Violine<br>
+          <button class="artist-info-trigger" data-artist="stepan-simonian" aria-label="Information zu Stepan Simonian">i</button> Stepan Simonian – Klavier
         </div>
       </li>
     </ul>
@@ -1147,6 +1267,19 @@
 <footer>
   Dissonanz der Macht · Digitales Programmheft – HfMT Hamburg
 </footer>
+
+<!-- MODAL -->
+<div class="artist-modal-backdrop" id="artist-modal" aria-hidden="true">
+  <div class="artist-modal" role="dialog" aria-modal="true" aria-labelledby="artist-modal-title">
+    <div class="artist-modal-header">
+      <h3 id="artist-modal-title">Künstler*in</h3>
+      <button class="artist-modal-close" aria-label="Fenster schließen">×</button>
+    </div>
+    <div class="artist-modal-body" id="artist-modal-body">
+      <!-- Inhalt via JavaScript -->
+    </div>
+  </div>
+</div>
 
 <script>
   document.addEventListener("DOMContentLoaded", function () {
@@ -1159,6 +1292,413 @@
           document.body.classList.add("loaded");
         }, 20);
       });
+    });
+
+    const artistData = {
+      "anna-kreetta-gribajcevic": {
+        name: "Anna Kreetta Gribajcevic",
+        bio: `
+          <p>
+            Die finnische Bratschistin Anna Kreetta Gribajcevic studierte Viola bei Matti Hirvikangas
+            an der Sibelius-Akademie, an der Hochschule für Musik Saar bei Diemut Poppen und an der
+            Hochschule für Musik „Hanns Eisler“ in Berlin bei Kim Kashkashian.
+          </p>
+          <p>
+            Als Solistin trat sie mit dem Finnish Radio Symphony Orchestra, Les Siècles Paris und dem
+            Philharmonia Orchestra London auf und arbeitete dabei u. a. mit Jukka-Pekka Saraste, Sakari
+            Oramo und François-Xavier Roth zusammen. Gribajcevic spielte die finnischen Erstaufführungen
+            von Ligetis Solosonate sowie der Violakonzerte von Kurtág, Shchedrin, Ahmas und Aho; ihre
+            Einspielung des Violakonzerts von Kalevi Aho wurde mehrfach international ausgezeichnet.
+          </p>
+          <p>
+            Viele Jahre war sie 1. Solo-Bratschistin des Lahti Symphony Orchestra und bekleidete dieselbe
+            Position in weiteren finnischen Klangkörpern. Seit 2012 ist sie Professorin für Viola an der
+            Hochschule für Musik und Theater Hamburg und unterrichtet zusätzlich an der Sibelius-Akademie
+            in Helsinki. Sie spielt eine Viola von Vincenzo Postiglione (um 1850).
+          </p>
+        `
+      },
+
+      "asya-fateyeva": {
+        name: "Asya Fateyeva",
+        bio: `
+          <p>
+            Die Saxophonistin Asya Fateyeva öffnet ihrem Instrument neue Räume im Musikleben – mit Mut zu
+            ungewöhnlichen Programmen und beeindruckender technischer wie klanglicher Meisterschaft.
+            Klassisch ausgebildet und vielfach ausgezeichnet, widmet sie sich mit hörbarer Neugier ganz
+            unterschiedlichen Stilen und Epochen.
+          </p>
+          <p>
+            Geboren auf der Krim, bewegt sie sich mit großer Selbstverständlichkeit zwischen Originalwerken
+            für Saxophon und Repertoires aus Barock, Klassik und Romantik. Zugleich erweitert sie
+            kontinuierlich ihr Netzwerk und entwickelt gemeinsam mit anderen Musiker*innen neue
+            Konzertformate. Vor allem in der Kammermusik erforscht sie alles, was sie fasziniert:
+            frühbarocke Programme, Bachs Goldberg-Variationen in ungewöhnlicher Besetzung, Musik der
+            1920er-Jahre um Erwin Schulhoff, Begegnungen von Orgel und Saxophon bis hin zu Projekten mit
+            Jazz und Weltmusik.
+          </p>
+          <p>
+            2014 erreichte sie als erste Frau das Finale des renommierten Internationalen
+            Adolphe-Sax-Wettbewerbs im belgischen Dinant und wurde dort mit dem dritten Preis
+            ausgezeichnet; heute zählt sie zu den profiliertesten Saxophonistinnen ihrer Generation.
+          </p>
+        `
+      },
+
+      "clemens-malich": {
+        name: "Clemens Malich",
+        bio: `
+          <p>
+            Der Cellist Clemens Malich, 1967 in Freising bei München geboren, erhielt seinen ersten
+            Unterricht mit vier Jahren bei seinem Vater. Nach fünf prägenden Kindheitsjahren in Istanbul
+            studierte er Violoncello an den Musikhochschulen von München, Würzburg und Hamburg bei Walter
+            Nothas, Julius Berger und Wolfgang Mehlhorn sowie in London bei William Pleeth.
+          </p>
+          <p>
+            Er spielte in Klangkörpern wie dem Symphonieorchester des Bayerischen Rundfunks und den
+            Münchner Philharmonikern und musizierte dabei u. a. unter Sir Georg Solti, Sergiu Celibidache,
+            Leonard Bernstein und Lorin Maazel. Als Solist und Kammermusiker ist er Preisträger
+            verschiedener Wettbewerbe, konzertiert in Europa und Südamerika und gastiert regelmäßig bei
+            Festivals wie dem Schleswig-Holstein Musik Festival. Er ist Cellist des Brahms Trios Hamburg
+            und des Goldberg-Streichtrios; seine CD-Einspielungen wurden u. a. von BR und NDR gesendet.
+          </p>
+          <p>
+            Als Professor für Violoncello an der Hochschule für Musik und Theater Hamburg leitet er seit
+            2003 auch das Felix Mendelssohn Jugendorchester, mit dem er in Sälen wie der Berliner
+            Philharmonie und der Elbphilharmonie auftrat und 2017 den Europäischen Nachwuchsorchesterpreis
+            erhielt.
+          </p>
+        `
+      },
+
+      "stepan-simonian": {
+        name: "Stepan Simonian",
+        bio: `
+          <p>
+            Der Pianist Stepan Simonian, 1981 geboren und von der Fachpresse als „einer der großen
+            Bach-Interpreten seiner Generation“ gewürdigt, widmet sich mit besonderer Leidenschaft den
+            Klavierwerken Bachs, Beethovens, Schuberts, Schumanns und Brahms’.
+          </p>
+          <p>
+            Seine Ausbildung führte ihn vom Moskauer Konservatorium, wo er bei Pavel Nersessian, Oleg
+            Boshniakovich u. a. studierte, zu Evgeni Koroliov nach Hamburg – Erfahrungen, die sein
+            künstlerisches Profil ebenso prägen wie seine Lehrtätigkeit. Internationale Aufmerksamkeit
+            erlangte er u. a. als Silbermedaillengewinner des Bach-Wettbewerbs Leipzig 2010, als Preisträger
+            des Virginia Waring International Piano Competition und des José Iturbi International Piano
+            Competition sowie als Träger des Berenberg Kulturpreises.
+          </p>
+          <p>
+            Seither gastiert er bei Festivals wie dem Bachfest Leipzig, „La Roque d’Anthéron“, „Piano aux
+            Jacobins“, dem Mosel Musikfestival und in Sälen wie der Carnegie Hall New York, der Alten Oper
+            Frankfurt, dem Mariinsky-Theater St. Petersburg und dem Palau de la Música in Valencia. Als
+            Solist arbeitete er mit Klangkörpern wie dem Bach-Collegium Stuttgart, der Sinfonia Varsovia
+            und der Hamburger Symphoniker; zahlreiche Rundfunkmitschnitte dokumentieren sein Schaffen.
+          </p>
+        `
+      },
+
+      "tinatin-gambashidze": {
+        name: "Tinatin Gambashidze",
+        bio: `
+          <p>
+            Die georgische Pianistin Tinatin Gambashidze, in Tiflis geboren, erhielt mit sechs Jahren
+            ersten Klavierunterricht bei Alla Tschikwaidze. Sie studierte zunächst an der Musikhochschule
+            ihrer Heimatstadt bei Nodar Gabunia, Tengiz Amerijibi und Nino Kereselidze, anschließend bei
+            Volker Banfield an der Hochschule für Musik und Theater Hamburg, wo sie im Jahr 2000 ihr
+            Diplom ablegte.
+          </p>
+          <p>
+            Zunächst durch zahlreiche Auftritte mit führenden georgischen Orchestern bekannt geworden,
+            entwickelte sie parallel eine rege kammermusikalische Tätigkeit und ist u. a. als Mitgründerin
+            des Evrus-Trios auf CD-Aufnahmen wie „Klangornamente in Dur und Moll“ zu hören. Kooperationen
+            mit dem NDR führten sie zudem in musikpädagogische Projekte und Schulprogramme.
+          </p>
+          <p>
+            Seit 2001 lehrt Tinatin Gambashidze als Professorin an der Hochschule für Musik und Theater
+            Hamburg, wo sie neben dem klassischen Klavierrepertoire auch Klassik für Jazzstudierende
+            unterrichtet und so zwischen verschiedenen musikalischen Sprachen vermittelt.
+          </p>
+        `
+      },
+
+      "daria-parkhomenko": {
+        name: "Daria Parkhomenko",
+        bio: `
+          <p>
+            Die Pianistin Daria Parkhomenko, in Rostow am Don geboren, begann mit vier Jahren Klavier zu
+            spielen. Ihr langjähriger Mentor war Sergei Osipenko am Rostov State Rachmaninov Conservatoire;
+            derzeit setzt sie ihr Studium bei Stepan Simonian an der Hochschule für Musik und Theater
+            Hamburg fort.
+          </p>
+          <p>
+            Meisterkurse u. a. bei Alfred Brendel, Philippe Entremont, Eliso Virsaladze, Elisabeth
+            Leonskaja und Anna Vinnitskaja prägten ihre künstlerische Entwicklung. Sie ist Preisträgerin
+            zahlreicher internationaler Wettbewerbe, darunter der Sendai-Klavierwettbewerb 2019 (3. Preis
+            und Publikumspreis), der Čiurlionis-Wettbewerb in Vilnius, der Wettbewerb „In musica“ in Rom
+            sowie der ICOM-Wettbewerb „Hamburger Komponisten“.
+          </p>
+          <p>
+            Diese Erfolge führten sie als Solistin und Kammermusikerin auf Bühnen in Europa, Asien und den
+            USA – etwa in die Hamburger Laeiszhalle, das Rumänische Atheneum, die Estonia Concert Hall oder
+            nach Hongkong und Tainan – sowie zu Festivals wie dem Schleswig-Holstein Musik Festival, dem
+            Mecklenburg-Vorpommern Festival und den Gezeitenkonzerten. 2022 erschien ihr Debütalbum mit
+            Klavierwerken von George Enescu, das international viel Beachtung fand und u. a. für den Opus
+            Klassik und den Preis der Deutschen Schallplattenkritik nominiert wurde.
+          </p>
+        `
+      },
+
+      "aleksandar-madzar": {
+        name: "Aleksandar Madžar",
+        bio: `
+          <p>
+            Der Pianist Aleksandar Madžar, in Belgrad geboren, studierte Klavier in Novi Sad, Belgrad,
+            Moskau und Brüssel und wurde früh durch Preise bei renommierten Wettbewerben wie dem Busoni-
+            und dem Umberto-Micheli-Wettbewerb international bekannt. 1990 debütierte er bei den Berliner
+            Philharmonikern – ein Auftritt, der den Auftakt zu einer vielseitigen Karriere als Solist und
+            Kammermusiker markierte.
+          </p>
+          <p>
+            Seither ist er regelmäßiger Gast in der Wigmore Hall London, im Théâtre de la Ville Paris, im
+            Bozar Brüssel, im Concertgebouw Amsterdam, am Mailänder Konservatorium sowie bei Festivals in
+            Delft, Lockenhaus, Peasmarsh und Juventus.
+          </p>
+          <p>
+            Neben Konzerten mit namhaften Orchestern in Europa, bei denen er ein breit gefächertes
+            Repertoire vom klassischen Kanon bis zur Musik der Gegenwart pflegt, widmet er sich mit
+            besonderer Leidenschaft der Kammermusik und langfristigen künstlerischen Partnerschaften.
+            Einen wichtigen Teil seines Wirkens bildet zudem die pädagogische Arbeit: Aleksandar Madžar
+            unterrichtet am Royal Conservatoire in Brüssel und gibt regelmäßig internationale
+            Meisterkurse, in denen er seine Erfahrung an junge Pianist*innen weitergibt.
+          </p>
+        `
+      },
+
+      "tanja-becker-bender": {
+        name: "Tanja Becker-Bender",
+        bio: `
+          <p>
+            Die Geigerin Tanja Becker-Bender konzertiert weltweit mit einem weitgespannten Repertoire, das
+            sie immer wieder in neue Kontexte stellt. Als Solistin spielte sie unter Dirigenten wie Kurt
+            Masur, Fabio Luisi, Hartmut Haenchen und Dan Ettinger mit Orchestern wie dem Tokyo Philharmonic,
+            dem Jerusalem Symphony Orchestra, dem Houston Symphony, dem Orchestre de la Suisse Romande,
+            dem Radio-Sinfonieorchester Stuttgart und dem Konzerthausorchester Berlin.
+          </p>
+          <p>
+            Auch als Kammermusikerin ist sie international gefragt und gastierte u. a. in New York, Buenos
+            Aires, Paris, Rom und Wien. Neben den großen Standardwerken widmet sie sich vielen Raritäten –
+            etwa Violinkonzerten von Friedrich Eck, Kurt Weill, Rudi Stephan und Ernst Krenek – und arbeitet
+            sowohl mit Barockgeige als auch mit Komponisten der Gegenwart zusammen.
+          </p>
+          <p>
+            Ihre umfangreiche Diskografie, u. a. bei Hyperion und SWRmusic/Naxos, wurde von Fachzeitschriften
+            wie „Gramophone“, „BBC Music Magazine“ und „Strad“ vielfach ausgezeichnet. Ausgebildet u. a. bei
+            Wilhelm Melcher, Günter Pichler und Robert Mann, lehrte sie zunächst an der Hochschule für Musik
+            Saar; seit 2009 ist sie Professorin für Violine an der Hochschule für Musik und Theater Hamburg,
+            aus deren Klasse zahlreiche Preisträger*innen internationaler Wettbewerbe hervorgegangen sind.
+          </p>
+        `
+      },
+
+      "sebastian-klinger": {
+        name: "Sebastian Klinger",
+        bio: `
+          <p>
+            Der Cellist Sebastian Klinger, in München geboren und in Spanien aufgewachsen, erhielt mit sechs
+            Jahren seinen ersten Unterricht und studierte später bei Heinrich Schiff in Salzburg und Wien
+            sowie bei Boris Pergamenschikow in Berlin. Nach Erfolgen bei nationalen und internationalen
+            Wettbewerben gewann er 2001 den Deutschen Musikwettbewerb in Berlin.
+          </p>
+          <p>
+            Seither konzertiert er bei Festivals wie Schleswig-Holstein, Rheingau oder Mecklenburg-Vorpommern,
+            gastierte in der „Rising Stars“-Reihe u. a. in der Carnegie Hall New York, der Wigmore Hall London
+            und im Palais des Beaux-Arts Brüssel und tritt als Solist mit Orchestern wie dem Symphonieorchester
+            des Bayerischen Rundfunks, der Deutschen Radio Philharmonie, der Hong Kong Sinfonietta oder der
+            Accademia Nazionale di Santa Cecilia auf. Kammermusikpartner waren u. a. Lisa Batiashvili,
+            Emmanuel Pahud, Lang Lang und Yo-Yo Ma.
+          </p>
+          <p>
+            Seine Diskografie umfasst Solo-, Kammermusik- und Orchesterwerke und wurde u. a. mit einem
+            „Diapason d’Or“ ausgezeichnet; im Zentrum seiner jüngsten Veröffentlichung stehen Werke von
+            Dvořák. Unter den Chefdirigenten Mariss Jansons und Sir Simon Rattle war er viele Jahre 1.
+            Solocellist im Symphonieorchester des Bayerischen Rundfunks. 2015 wurde er als Professor für
+            Violoncello an die Hochschule für Musik und Theater Hamburg berufen. Er spielt ein Cello von
+            Camillus Camilli (Mantua, 1736).
+          </p>
+        `
+      },
+
+      "caroline-weichert": {
+        name: "Caroline Weichert",
+        bio: `
+          <p>
+            Die Pianistin Caroline Weichert wuchs in einem Haus voller Klaviere auf – beide Eltern waren
+            Pianisten und unterrichteten zu Hause, sodass früh klar wurde, dass Musik ihr Lebensweg sein
+            würde. Erste Unterrichtsjahre bei Mutter und Vater gingen in ein Studium bei ihrem Vater Gregor
+            Weichert über, damals Professor an der Musikhochschule Münster.
+          </p>
+          <p>
+            Wettbewerbe wie „Jugend musiziert“ weckten ihren Ehrgeiz; die tägliche Übedisziplin erschloss
+            ihr nach und nach ein weites Repertoire. Eine besondere Faszination entwickelte sie für Franz
+            Liszt, dessen Klaviersprache und „Choreografie der Hände“ sie intensiv studierte und später zu
+            einem Schwerpunkt ihrer Konzerttätigkeit machte.
+          </p>
+          <p>
+            Ein zweiter künstlerischer „Donnerschlag“ war für sie die Begegnung mit der Musik Dmitri
+            Schostakowitschs, dessen Klavierwerk sie vollständig einstudierte und auf CD vorlegte. Prägend
+            wurde zudem die Zusammenarbeit mit Conrad Hansen, Schüler von Edwin Fischer und Partner Wilhelm
+            Furtwänglers: Aus Unterricht, gemeinsamen Konzerten und Kursen – etwa auf Schloss Hasselburg –
+            erwuchs eine enge künstlerische Freundschaft, in der sich eine traditionsreiche deutsche
+            Pianistenschule mit Caroline Weicherts eigener interpretatorischer Handschrift verband.
+          </p>
+        `
+      },
+
+      "ljudmila-minnibaeva": {
+        name: "Ljudmila Minnibaeva",
+        bio: `
+          <p>
+            Ljudmila Minnibaeva wurde in Leninabad in Tadschikistan geboren und erhielt ihren ersten
+            Violinunterricht bereits im Alter von fünf Jahren an der Spezialmusikschule des Konservatoriums
+            in Ufa.
+          </p>
+          <p>
+            Von 1992 bis 1995 studierte sie am Moskauer Konservatorium bei Irina Botschkova, bevor sie ihre
+            Ausbildung in Hamburg bei Mark Lubotsky und Kolja Blacher fortsetzte und dort sowohl Diplom als
+            auch Konzertexamen mit Auszeichnung ablegte. Sie gewann zahlreiche Wettbewerbe, darunter den
+            Elise-Meyer-Preis und den Johannes-Brahms-Wettbewerb, und konzertierte als Solistin und
+            Kammermusikerin in vielen Ländern, begleitet von Rundfunk- und Fernsehproduktionen.
+          </p>
+          <p>
+            Seit 2003 lehrt sie als Professorin an der Hochschule für Musik und Theater Hamburg und ist seit
+            2011 Mitglied des NDR Elbphilharmonie Orchesters. Minnibaeva spielt eine Pietro-Landolfi-Violine
+            von 1760.
+          </p>
+        `
+      },
+
+      "andreas-gruenkorn": {
+        name: "Andreas Grünkorn",
+        bio: `
+          <p>
+            Andreas Grünkorn studierte bei David Geringas in Lübeck und schloss dieses Studium mit dem
+            Konzertexamen und Auszeichnung ab. Bereits während der Studienzeit erhielt er den Förderpreis
+            des Landes Schleswig-Holstein, der erstmals an einen Cellisten vergeben wurde.
+          </p>
+          <p>
+            1999 debütierte er mit dem Deutschen Symphonie-Orchester Berlin in der Berliner Philharmonie und
+            trat seither mit Dirigenten wie Jonathan Nott, Hans Graf, Kent Nagano, Leif Segerstam und Neeme
+            Järvi auf. Viele Jahre war er Erster Solo-Cellist des Deutschen Symphonie-Orchesters Berlin,
+            bevor er 2011 in gleicher Position zum NDR Elbphilharmonie Orchester wechselte.
+          </p>
+          <p>
+            Als Kammermusiker arbeitete er mit Christian Tetzlaff, Emanuel Ax, Vladimir Ashkenazy, Daniel
+            Hope und dem Hartog-Quartett zusammen und ist regelmäßig Gast der 12 Cellisten der Berliner
+            Philharmoniker. Seine Konzerttätigkeit führte ihn nach Europa und Asien und umfasst ein breites
+            Repertoire vom klassischen Kanon bis zur Moderne.
+          </p>
+        `
+      },
+
+      "elizaveta-don": {
+        name: "Elizaveta Don",
+        bio: `
+          <p>
+            Elizaveta Don wurde in Moskau in eine Musikerfamilie geboren und erhielt mit vier Jahren ihren
+            ersten Klavierunterricht. Nach ihrer Ausbildung am Tschaikowsky-Konservatorium bei Sergei
+            Dorensky, die sie 2011 abschloss, setzte sie ihr Studium bei Evgeni Koroliov in Hamburg fort
+            und erwarb dort den Masterabschluss sowie das Konzertexamen.
+          </p>
+          <p>
+            Don ist Preisträgerin von 17 internationalen Wettbewerben und trat in mehr als 35 Ländern auf,
+            darunter in Europa, Asien, Nord- und Südamerika sowie Australien. Sie spielte in renommierten
+            Sälen wie dem Kammermusiksaal der Berliner Philharmonie, der Laeiszhalle Hamburg, der Salle
+            Cortot Paris oder dem Teatro Ristori Verona.
+          </p>
+          <p>
+            Neben ihrer solistischen Tätigkeit widmet sie sich intensiv der Kammermusik und arbeitete mit
+            Preisträgern bedeutender Wettbewerbe zusammen. Ihr Repertoire reicht vom Barock bis zur
+            zeitgenössischen Musik; zudem spielt sie Cembalo. Seit 2013 unterrichtet sie an der Hochschule
+            für Musik und Theater Hamburg.
+          </p>
+        `
+      },
+
+      "antonio-di-dedda": {
+        name: "Antonio Di Dedda",
+        bio: `
+          <p>
+            Antonio Di Dedda, 1992 in Mailand geboren, begann seine musikalische Ausbildung früh am Klavier
+            und an der Orgel. Er studierte am Conservatorio di Foggia bei Rossella Di Chio, Francesco Di
+            Lernia und Luca Scandali und setzte seine Ausbildung an der Hochschule für Musik und Theater
+            Hamburg fort, wo Pieter van Dijk, Evgeni Koroliov und Anna Vinnitskaya zu seinen prägenden
+            Lehrern wurden.
+          </p>
+          <p>
+            Meisterkurse bei Elisso Virsaladze ergänzten seine künstlerische Entwicklung. Di Dedda gewann
+            zahlreiche Klavier- und Orgelwettbewerbe, darunter den Schumann-Sonderpreis in Zwickau und
+            Auszeichnungen beim Tariverdiev-Orgelwettbewerb. Als Solist konzertierte er in vielen
+            europäischen Ländern sowie in Israel, Russland und China; Rundfunkaufnahmen entstanden u. a. für
+            Radio Vatikan und NDR Kultur.
+          </p>
+          <p>
+            Seit 2024 ist er Professor für Orgel an der Hochschule für Musik und Theater Hamburg.
+          </p>
+        `
+      }
+    };
+
+    const modalBackdrop = document.getElementById("artist-modal");
+    const modalClose = modalBackdrop ? modalBackdrop.querySelector(".artist-modal-close") : null;
+    const modalTitle = document.getElementById("artist-modal-title");
+    const modalBody = document.getElementById("artist-modal-body");
+
+    function openArtistModal() {
+      if (!modalBackdrop) return;
+      modalBackdrop.classList.add("is-open");
+      modalBackdrop.setAttribute("aria-hidden", "false");
+    }
+
+    function closeArtistModal() {
+      if (!modalBackdrop) return;
+      modalBackdrop.classList.remove("is-open");
+      modalBackdrop.setAttribute("aria-hidden", "true");
+    }
+
+    document.querySelectorAll(".artist-info-trigger").forEach(btn => {
+      btn.addEventListener("click", function (e) {
+        e.preventDefault();
+        const key = this.dataset.artist;
+        const data = artistData[key];
+        if (data) {
+          modalTitle.textContent = data.name;
+          modalBody.innerHTML = data.bio;
+        } else {
+          modalTitle.textContent = "Information";
+          modalBody.innerHTML = "<p>Für diese Person liegt derzeit kein ausführlicher Text vor.</p>";
+        }
+        openArtistModal();
+      });
+    });
+
+    if (modalClose) {
+      modalClose.addEventListener("click", function () {
+        closeArtistModal();
+      });
+    }
+
+    if (modalBackdrop) {
+      modalBackdrop.addEventListener("click", function (e) {
+        if (e.target === modalBackdrop) {
+          closeArtistModal();
+        }
+      });
+    }
+
+    document.addEventListener("keydown", function (e) {
+      if (e.key === "Escape") {
+        closeArtistModal();
+      }
     });
   });
 </script>
